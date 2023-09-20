@@ -1,0 +1,235 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{CSE4705 — Homework 1}
+\author{Mike Medved}
+\date{September 8th, 2023}
+
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{multirow, tabularx}
+\usepackage[margin=1in]{geometry} 
+\usepackage[table,xcdraw]{xcolor}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\NewExpandableDocumentCommand\mcc{O{1}m}{\multicolumn{#1}{c}{#2}}
+
+\lstdefinestyle{Java}{
+    language     = Java,
+    aboveskip    = 3mm,
+    belowskip    = 3mm,
+    basicstyle   = \footnotesize\ttfamily,
+    keywordstyle = \color{blue},
+    stringstyle  = \color{green},
+    commentstyle = \color{red}\small\ttfamily
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{1 - Definitions (25pts)}
+
+\subsection*{Intelligence}
+
+Intelligence refers to an entity's ability to make it's own decisions, inferences, and conduct actions that will further it towards it's overarching end goal.
+
+\subsection*{Artificial Intelligence}
+
+Artificial Intelligence refers to an entity which can independently and/or autonomously plan and execute goal(s) from start-to-finish.
+
+\subsection*{Agent}
+
+An agent is some entity that can partake in rational behavior or exhibit intelligence. 
+
+\subsection*{Rationality}
+
+Rationality refers to one being rational, more specifically making decisions based on logic and reason, as well as taking actions based on those logically valid decisions that are consistent with one's overarching goal.
+
+\subsection*{Logical Reasoning}
+
+Logical Reasoning is a process by which an entity uses it's programmed logic to analyze a situation and make a decision based on that analysis. Furthermore, it involves components such as analyzing the information at hand, making deductions and inferences, identifying patterns in the data, and drawing it's own conclusions. 
+
+\subsection*{Agent Function}
+
+The Agent Function is a mathematical function which maps a series of percepts to an action.
+
+\begin{center}
+    $f: P^* \rightarrow A$
+\end{center}
+
+\subsection*{Agent Program}
+
+The Agent Program is the actual code that is run by the agent. It is the implementation of the agent function.
+
+\subsection*{Autonomy}
+
+Autonomy refers to the ability of some entity to make it's own decisions and take actions without the need for external intervention.
+
+\section*{2 - Reflex Actions (10pts)}
+
+\subsection*{Rationality}
+
+Yes - they are rational - since the underlying reflex which triggers the action is typically based on self-preservation. For example, flinching when something is thrown at you is a reflex action that is based on the desire to avoid being hit by the object. This in of itself is a rational decision, and as such should be classified as rational.
+
+\subsection*{Intelligence}
+
+No - they are not intelligent - as the name suggests, reflex actions are based on innate reflexes. They are not based on any sort of logical reasoning or decision making and occur spontaneously when the right conditions are met. 
+
+$\hfill \break$
+For example, when a doctor hits your knee with a reflex hammer, your leg will kick out. You do not need to think about it performing this action, it merely happens due to the underlying reflex being triggered.  
+
+\section*{3 - Mathematical Knowledge (10pts)}
+
+To the entity, it is just completing it's tasks in the way it was programmed to do. The mathematical expressions used to power that are merely our way, as humans, to formalize the operations in use in such a way that can be programmed. These equations and operations are abstracted out from the entity's view to the point that the entity is simply able to complete it's task without any knowledge of the underlying mathematics. 
+
+$\hfill \break$
+This would be like saying that are manually controlling our organs, manually breathing, beating our heart, digesting food, etc. We have no understanding of the complexities required to time, coordinate, and execute these tasks, yet we are able to do them without any knowledge of the underlying processes.
+
+\newpage
+\section*{4 - Vacuum Cleaner Agent (10pts)}
+
+\subsection*{Proving Rationality}
+
+\begin{proof}
+    By definition, a rational agent attempts to maximize it's performance measure output by conducting the series of actions leading to the highest performance measure for the given environment.
+
+    $\hfill \break$
+    With this in mind, the vacuum cleaner agent acts rationally since it correctly acts on environmental data (floor dirtiness state) by cleaning the floor if needed. In this way, the agent is maximizing it's performance measure (clean floor) by acting on the environmental data (floor dirtiness state) to achieve the highest performance measure (clean floor).
+\end{proof}
+
+\subsection*{Rational Agent Function}
+
+$\hfill \break$
+The agent takes the following steps in order to achieve it's end-goal of cleaning the floor with the minimum points expended:
+
+\begin{enumerate}
+    \item The agent checks the current state of the floor
+    \begin{itemize}
+        \item If the floor is dirty, the agent cleans the floor records the new state
+        \item If the floor is not dirty, the agent moves without performing any cleaning
+    \end{itemize}
+    \item The agent the moves to the next closest unvisited tile and repeats step 1 until all tiles have been visited
+\end{enumerate}
+
+$\hfill \break$
+In this design, an internal state is kept in order to minimize the overall number of points expended by moving.
+
+\subsection*{Potential Agent Designs}
+
+One potential agent design for the scenario of the agent having no geographical awareness, and the condition that squares may become dirty after cleaning would have the agent act like a robot vacuum in that it roams around the geographic region until it has cleaned all navigable tiles. It could be useful for the agent to learn from it's experiences, such as learning the layout of the room, and the most efficient way to clean the room. This would allow the agent to minimize the number of points expended by moving, and maximize the number of points gained by cleaning. 
+
+\newpage
+\section*{5 - PEAS Classifications (10pts)}
+
+\subsection*{Playing Soccer}
+
+\begin{itemize}
+    \item Performance Measure: Number of goals scored, penalties obtained, etc.
+    \item Environment: Dynamic (continuous movement of the ball), Partially Observable (cannot see the entire field at once), Multi-Agent (multiple players on each team), Stochastic (randomness in the ball's movement), Sequential (game is played in a series of steps)
+    \item Actuators: Muscles of the player used to kick, pass, run, and perform other actions to further the team's goal
+    \item Sensors: Eyes to see the ball, other players, and the goal; ears to hear the referee's whistle; nerves to feel vibrations caused by the ball
+\end{itemize}
+
+\subsection*{Exploring the subsurface of oceans of Titan}
+
+\begin{itemize}
+    \item Performance Measure: Number of samples collected, amount of data gathered, successful navigation of the planet, etc.
+    \item Environment: Dynamic (changing oceanic conditions), Partially Observable (cannot see the entire ocean at once), Multi-Agent (if multiple submersible vehicles are in use)
+    \item Actuators: Propellers to move the vehicle, robotic arms to collect samples, etc.
+    \item Sensors: Cameras to see the ocean floor, sonar to detect objects in the water, etc.
+\end{itemize}
+
+\subsection*{Shopping for used AI books on the Internet}
+
+\begin{itemize}
+    \item Performance Measure: Amount of money spent, quality of the books purchased, delivery time, etc.
+    \item Environment: Dynamic (unless conducted in a sandbox, prices, delivery conditions, availability will change over time), Partially Observable (cannot see the entire internet at once), Single-Agent (you are shopping alone, we will not consider other shoppers for the sake of this example)
+    \item Actuators: Mouse to click on links, keyboard to type in search queries, etc.
+    \item Sensors: Eyes to see and perceive content on the screen
+\end{itemize}
+
+\subsection*{Playing a Tennis Match}
+
+\begin{itemize}
+    \item Performance Measure: Number of points scored, number of games won, etc.
+    \item Environment: Dynamic (continuous movement of the ball), Partially Observable (cannot see the entire court at once), Multi-Agent (multiple players on each team), Sequential (game is played in a series of steps)
+    \item Actuators: Muscles of the player used to hit the ball, run, and perform other actions to further the team's goal
+    \item Sensors: Eyes to see the ball, other players, and the court; ears to hear the referee's whistle and buzzer
+\end{itemize}
+
+\subsection*{Practicing Tennis against a Wall}
+
+\begin{itemize}
+    \item Performance Measure: Improvement of tennis skills, number of balls missed, etc.
+    \item Environment: Dynamic (continuous movement of the ball), Fully Observable (player can see the whole wall), Single-Agent (you are practicing alone), Sequential (game is played in a series of steps)
+    \item Actuators: Muscles of the player used to hit the ball, run, and perform other actions to improve own skills
+    \item Sensors: Eyes to track the ball's position
+\end{itemize}
+
+\subsection*{Performing a High Jump}
+
+\begin{itemize}
+    \item Performance Measure: Clearing the predefined target height
+    \item Environment: Static (bar, landing mat, and other variables remain constant throughout each attempt), Partially Observable (cannot see the entire field at once), Single-Agent (you are performing alone), Sequential (the high jump execution is a series of movements)
+    \item Actuators: Muscles of the player used to jump
+    \item Sensors: Eyes to see the bar, target height, and landing mat
+\end{itemize}
+
+\subsection*{Knitting a Sweater}
+
+\begin{itemize}
+    \item Performance Measure: Completing the sweater, quality of the knitting (amount of frayed wool/threads)
+    \item Environment: Static (yarn, needles, and location remain the same), Fully Observable (person can see the entire surface they are knitting on), Single-Agent (the knitter)
+    \item Actuators: Hands, fingers, and muscles used to knit
+    \item Sensors: Eyes to see the yarn, needles, and sweater
+\end{itemize}
+
+\subsection*{Bidding on an item at an Auction}
+
+\begin{itemize}
+    \item Performance Measure: Winning the auction at lowest price
+    \item Environment: Dynamic (prices change over time), Partially Observable (cannot see the entire auction at once), Multi-Agent (multiple bidders)
+    \item Actuators: Hands to raise and lower the bid paddle
+    \item Sensors: Eyes to see the auctioneer, other bidders, and the item being auctioned; ears to listen to the current price
+\end{itemize}
+
+\newpage
+\section*{6 - Defining Agent Types (25pts)}
+
+\subsection*{Reflex Agent}
+
+A Reflex Agent is an agent which only acts upon it's current state (percept), and has no model of the world beyond that. As such, it cannot make inferences or deductions about the world, and can only act upon the current state of the world.
+
+\subsection*{Model-Based Agent}
+
+A Model-Based Agent is an agent which has knowledge how the environment works, but can only keep track of parts of the environment it's can't see.
+
+\subsection*{Goal-Based Agent}
+
+A Goal-Based Agent is an agent which is aware of it's end-goal, and can make decisions based on how it can achieve that goal.
+
+\subsection*{Utility-Based Agent}
+
+A Utility-Based Agent is an agent which performs actions that maximize it's overall utility, this is done by using a performance-measure which is used to both determine the utility of each action, and track if the agent is achieving it's goal.
+
+\subsection*{Learning Agent}
+
+A Learning Agent is an agent which can learn from it's past experiences, and use that knowledge to make better decisions in the future.
+
+\newpage
+\section*{7 - Stochastic Environments (10pts)}
+
+\subsection*{Murphy's Law}
+
+A potential agent program which can address a 10\% sensor fault rate is to have the agent perform the same action multiple times for redundancy sake. For example, to check if the floor is dirty, if the sensor fails and reports that the floor is clean, run the sensor check another time. If the results are inconsistent, clean the floor anyways. The worst that could happen is the floor is cleaned twice, whereas if only the faulty sensor output is trusted, the floor would have never been cleaned.
+
+\subsection*{Small Children}
+
+A potential agent program that can address each tile having a 10\% chance of becoming dirty after it has been cleaned is to have the agent continuously scan for dirty tiles and clean them as they are found. In the case that the agent has full observability, the entire field can be observed, and it can stop once all tiles are clean, as they will not advance time in this hypothetical, thus creating the probability for more new dirty tiles from being created.
+
+\end{document}
